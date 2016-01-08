@@ -7,6 +7,8 @@ from lib import (get_primary_pipeline_config,
                  get_sg,
                  get_tk)
 
+test_path = r"P:\projects\CM\shots\sq00\sq00_sh0560\light".replace("/", "\\")
+
 
 def test_pipeline_config():
     pipeline_config = get_primary_pipeline_config(test_path)
@@ -41,7 +43,7 @@ def test_path_context():
 
 
 def test_get_prime_pc():
-    assert os.path.isdir(get_primary_pipeline_config(test_path))
+    assert os.path.isdir(get_primary_pipeline_config(test_path).get(platform_lookup[sys.platform]))
 
 
 def test_host():
@@ -50,5 +52,4 @@ def test_host():
 
 
 if __name__ == '__main__':
-    test_path = r"P:\projects\CM\shots\sq00\sq00_sh0560\light".replace("/", "\\")
     test_path_context()
